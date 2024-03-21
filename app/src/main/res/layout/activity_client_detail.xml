@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ClientDetailActivity">
+
+    <EditText
+        android:id="@+id/etClientName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre"
+        android:textColorHint="@android:color/darker_gray"
+        android:enabled="false"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/etClientSurname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etClientName"
+        android:hint="Apellido"
+        android:textColorHint="@android:color/darker_gray"
+        android:enabled="false"
+        android:layout_marginTop="16dp"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/etClientAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etClientSurname"
+        android:hint="Dirección"
+        android:textColorHint="@android:color/darker_gray"
+        android:enabled="false"
+        android:layout_marginTop="16dp"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/etClientPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etClientAddress"
+        android:hint="Teléfono"
+        android:textColorHint="@android:color/darker_gray"
+        android:enabled="false"
+        android:layout_marginTop="16dp"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/etClientEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etClientPhone"
+        android:hint="Email"
+        android:textColorHint="@android:color/darker_gray"
+        android:enabled="false"
+        android:layout_marginTop="16dp"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/etClientNotes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etClientEmail"
+        android:hint="Notas"
+        android:textColorHint="@android:color/darker_gray"
+        android:enabled="false"
+        android:layout_marginTop="16dp"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btModifyClient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etClientNotes"
+        android:text="Modificar cliente"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/btDeleteClient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btModifyClient"
+        android:text="Eliminar cliente"
+        android:layout_marginTop="16dp"/>
+
+</RelativeLayout>

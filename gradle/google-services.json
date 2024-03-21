@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "289652127573",
+    "project_id": "syncbooking-7d06a",
+    "storage_bucket": "syncbooking-7d06a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289652127573:android:93c6814e4f39b178cf21dc",
+        "android_client_info": {
+          "package_name": "com.example.syncbooking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "289652127573-9legvam8qp8sjen3db98hj8on7u43cbv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.syncbooking",
+            "certificate_hash": "220384a1be114f6478b019a6c443bc8b520af27b"
+          }
+        },
+        {
+          "client_id": "289652127573-9vm82n3l7f77ppja86eo9dj3fdtu36ci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnew-iXfrgqrxky3-CHHiqqK1_d7ycmeQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "289652127573-9vm82n3l7f77ppja86eo9dj3fdtu36ci.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

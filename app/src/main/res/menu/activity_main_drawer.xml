@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item android:id="@+id/nav_item_adminusers"
+
+            android:title="@string/menu_adminusers"  />
+
+        <item android:id="@+id/nav_item_profile"
+
+            android:title="@string/menu_profile" />
+
+        <item android:id="@+id/nav_item_premium"
+            android:icon="@android:drawable/star_on"
+            android:title="@string/menu_becamepremium" />
+    </group>
+
+
+    <item android:title="Cuenta">
+        <menu>
+            <item android:id="@+id/nav_item_preferences"
+                android:icon="@android:drawable/ic_popup_sync"
+                android:title="@string/menu_preferences" />
+            <item android:id="@+id/nav_item_signout"
+                android:icon="@drawable/abc_vector_test"
+                android:title="@string/menu_signout" />
+        </menu>
+    </item>
+</menu>
