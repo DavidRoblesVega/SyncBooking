@@ -11,3 +11,4 @@ data class Client(
 ) {
     constructor(name: String, surname: String, clientId: String) : this(name, surname, clientId, "", "", "", "")
 }
+

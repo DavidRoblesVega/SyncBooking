@@ -12,7 +12,7 @@ class ClientAdapter(private val clients: List<Client>, private val onItemClick: 
     private var filteredClients: List<Client> = clients.toList()
 
     inner class ClientViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val nameTextView: TextView = itemView.findViewById(android.R.id.text1)
+        private val nameTextView: TextView = itemView.findViewById(R.id.clientNameTextView)
 
         fun bind(client: Client) {
             nameTextView.text = "${client.name} ${client.surname}"

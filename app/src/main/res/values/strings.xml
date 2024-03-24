@@ -5,9 +5,10 @@
     <string name="forgotPassword">¿Olvidaste tu contraseña?</string>
     <string name="login">Iniciar sesión</string>
     <string name="resetPassword">Enviar Contraseña</string>
-    <string name="invitation">Texto provisional</string>
+    <string name="logintext">Guarda tus reservas y gestiona tus clientes con facilidad</string>
     <string name="acept">He leído y acepto los</string>
     <string name="terms">términos y condiciones de uso.</string>
+    <string name="register">Registrarse</string>
 
     <string name="empty_email">Introduce un email</string>
     <string name="invalid_email">Email incorrecto</string>

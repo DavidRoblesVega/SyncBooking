@@ -3,14 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="@color/darkgrey">
 
     <EditText
         android:id="@+id/etSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:drawableStart="@drawable/search_icon"
+        android:drawablePadding="12dp"
         android:hint="Buscar cliente..."
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/black"
+        android:background="@drawable/edittext_search"
         android:inputType="text"
         android:imeOptions="actionSearch"/>
 
@@ -25,10 +30,11 @@
         android:id="@+id/btAddClient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="10dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/google"
-        app:backgroundTint="@color/white" />
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circular"
+       app:backgroundTint="@color/white"/>
+
 
 </RelativeLayout>

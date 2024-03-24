@@ -5,4 +5,8 @@
     <color name="red">#FF0000</color>
     <color name="orange">#FF8000</color>
     <color name="green">#008000</color>
+
+    <color name="lightgrey">#EEEEEE</color>
+    <color name="darkgrey">#212121</color>
+    <color name="lightblue">#90CAF9</color>
 </resources>
