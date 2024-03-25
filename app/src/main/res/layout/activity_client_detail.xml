@@ -6,75 +6,152 @@
     tools:context=".ClientDetailActivity"
     android:background="@color/darkgrey">
 
+    <TextView
+        android:id="@+id/tvClientNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"/>
+
     <EditText
         android:id="@+id/etClientName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvClientNameLabel"
         android:hint="Nombre"
         style="@style/EditTextClientDetail"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:layout_marginTop="4dp"/>
 
+
+    <TextView
+        android:id="@+id/tvClientSurnameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apellido:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"
+        android:layout_below="@id/etClientName"
+        android:layout_marginTop="16dp"/>
 
     <EditText
         android:id="@+id/etClientSurname"
-        android:layout_below="@id/etClientName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvClientSurnameLabel"
         android:hint="Apellido"
         style="@style/EditTextClientDetail"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvClientAddressLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dirección:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"
+        android:layout_below="@id/etClientSurname"
+        android:layout_marginTop="16dp"/>
 
     <EditText
         android:id="@+id/etClientAddress"
-        android:layout_below="@id/etClientSurname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvClientAddressLabel"
         android:hint="Dirección"
         style="@style/EditTextClientDetail"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvClientPhoneLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teléfono:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"
+        android:layout_below="@id/etClientAddress"
+        android:layout_marginTop="16dp"/>
 
     <EditText
         android:id="@+id/etClientPhone"
-        android:layout_below="@id/etClientAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvClientPhoneLabel"
         android:hint="Teléfono"
         style="@style/EditTextClientDetail"
-        android:inputType="phone"/>
+        android:inputType="phone"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvClientEmailLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"
+        android:layout_below="@id/etClientPhone"
+        android:layout_marginTop="16dp"/>
 
     <EditText
         android:id="@+id/etClientEmail"
-        android:layout_below="@id/etClientPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvClientEmailLabel"
         android:hint="Email"
         style="@style/EditTextClientDetail"
-        android:inputType="textEmailAddress"/>
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvClientNotesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notas:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"
+        android:layout_below="@id/etClientEmail"
+        android:layout_marginTop="16dp"/>
 
     <EditText
         android:id="@+id/etClientNotes"
-        android:layout_below="@id/etClientEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvClientNotesLabel"
         android:hint="Notas"
         style="@style/EditTextClientDetail"
-        android:inputType="textMultiLine"/>
+        android:inputType="textMultiLine"
+        android:layout_marginTop="4dp"/>
+
 
     <LinearLayout
         android:id="@+id/buttonLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/etClientNotes"
         android:orientation="horizontal"
-        android:layout_marginTop="16dp"
+        android:layout_alignParentBottom="true"
         android:gravity="center">
 
         <Button
             android:id="@+id/btModifyClient"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="Modificar cliente"
-            android:textColor="@color/lightgrey"
+            android:textColor="@color/white"
             android:fontFamily="@font/roboto_medium"
-            android:layout_marginEnd="8dp"/>
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/lightblue"/>
 
         <Button
             android:id="@+id/btDeleteClient"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="Eliminar cliente"
             android:textColor="@color/lightgrey"
-            android:fontFamily="@font/roboto_medium"/>
+            android:fontFamily="@font/roboto_medium"
+            android:backgroundTint="@color/lightblue"/>
 
     </LinearLayout>
 

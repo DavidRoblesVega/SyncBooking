@@ -16,9 +16,9 @@
             android:id="@+id/toolbar_main"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/lightblue"
+            android:background="@color/electricblue"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:title="@string/bar_title"/>
+            app:title="@string/bar_title" />
 
 
     </com.google.android.material.appbar.AppBarLayout>

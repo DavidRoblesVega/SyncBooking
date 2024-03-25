@@ -43,5 +43,7 @@
     <string name="address">Dirección</string>
     <string name="information">Información</string>
 
+    <string name="prueba">Prueba</string>
+
 
 </resources>

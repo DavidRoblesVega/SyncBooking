@@ -1,10 +1,13 @@
 package com.example.syncbooking
 
+import android.animation.ArgbEvaluator
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -75,6 +78,29 @@ class ClientDetailActivity : AppCompatActivity() {
         etClientEmail.isEnabled = true
         etClientNotes.isEnabled = true
         btModifyClient.text = "Guardar cambios"
+        btModifyClient.setBackgroundColor(ContextCompat.getColor(this, R.color.electricblue))
+
+        val startColor = ContextCompat.getColor(this, R.color.lightgrey)
+        val endColor = ContextCompat.getColor(this, R.color.electricblue)
+
+        animarCambiarColor(etClientName, startColor, endColor)
+        animarCambiarColor(etClientSurname, startColor, endColor)
+        animarCambiarColor(etClientAddress, startColor, endColor)
+        animarCambiarColor(etClientPhone, startColor, endColor)
+        animarCambiarColor(etClientEmail, startColor, endColor)
+        animarCambiarColor(etClientNotes, startColor, endColor)
+    }
+
+    private fun animarCambiarColor(editText: EditText, startColor: Int, endColor: Int) {
+        val colorAnimation = ObjectAnimator.ofObject(
+            editText,
+            "backgroundColor",
+            ArgbEvaluator(),
+            startColor,
+            endColor
+        )
+        colorAnimation.duration = 500 // Duración de la animación en milisegundos
+        colorAnimation.start()
     }
 
     private fun deshabilitarEdicion() {
@@ -86,6 +112,16 @@ class ClientDetailActivity : AppCompatActivity() {
         etClientEmail.isEnabled = false
         etClientNotes.isEnabled = false
         btModifyClient.text = "Modificar cliente"
+        btModifyClient.setBackgroundColor(ContextCompat.getColor(this, R.color.lightblue))
+
+        etClientName.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent))
+        etClientSurname.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent))
+        etClientAddress.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent))
+        etClientPhone.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent))
+        etClientEmail.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent))
+        etClientNotes.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent))
+
+
     }
 
     private fun guardarCambios() {

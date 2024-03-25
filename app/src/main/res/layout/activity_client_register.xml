@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightgrey">
+    android:background="@color/darkgrey">
 
     <!-- Título "Información" -->
     <TextView
@@ -27,52 +27,61 @@
         android:layout_marginEnd="16dp">
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="@string/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/name">
+            app:boxStrokeColor="@color/electricblue"
+            android:textColorHint="@color/electricblue"
+            app:hintTextColor="@color/electricblue"
+            app:cursorColor="@color/electricblue"
+            android:textColor="@color/electricblue">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etName"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:textColor="@color/electricblue"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo "Apellidos" -->
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="@string/surnames"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/surnames">
+            app:boxStrokeColor="@color/electricblue"
+            android:textColorHint="@color/electricblue"
+            app:hintTextColor="@color/electricblue"
+            app:cursorColor="@color/electricblue"
+            android:textColor="@color/electricblue">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSurname"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:textColor="@color/electricblue"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo "Dirección" -->
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="@string/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/address">
+            app:boxStrokeColor="@color/electricblue"
+            android:textColorHint="@color/electricblue"
+            app:hintTextColor="@color/electricblue"
+            app:cursorColor="@color/electricblue"
+            android:textColor="@color/electricblue">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etAddress"
+                android:inputType="textPostalAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:textColor="@color/electricblue"/>
 
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -101,37 +110,49 @@
 
         <!-- Campo "Teléfono" -->
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="@string/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/phone">
+            app:boxStrokeColor="@color/electricblue"
+            android:textColorHint="@color/electricblue"
+            app:hintTextColor="@color/electricblue"
+            app:cursorColor="@color/electricblue"
+            android:textColor="@color/electricblue">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPhone"
+                android:inputType="phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:textColor="@color/electricblue"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo "Email" -->
+
+
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="@string/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/email">
+            app:boxStrokeColor="@color/electricblue"
+            android:textColorHint="@color/electricblue"
+            app:hintTextColor="@color/electricblue"
+            app:cursorColor="@color/electricblue"
+            android:textColor="@color/electricblue">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
+                android:textColor="@color/electricblue"
+                android:inputType="textEmailAddress"/>
 
         </com.google.android.material.textfield.TextInputLayout>
+
+
+
     </LinearLayout>
 
     <!-- Título "Otros" -->
@@ -157,21 +178,29 @@
         android:layout_marginEnd="16dp">
 
         <!-- Campo "Notas" -->
+
+
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="@string/notes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/notes">
+            app:boxStrokeColor="@color/electricblue"
+            android:textColorHint="@color/electricblue"
+            app:hintTextColor="@color/electricblue"
+            app:cursorColor="@color/electricblue"
+            android:textColor="@color/electricblue"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etNotes"
+                android:inputType="textMultiLine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
-
+                android:textColor="@color/electricblue"
+                />
         </com.google.android.material.textfield.TextInputLayout>
+
+
     </LinearLayout>
 
     <!-- Botón de "Guardar" -->
@@ -179,11 +208,11 @@
         android:id="@+id/btSaveClient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/save"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="16dp"
         android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/red"
-        android:text="@string/save"
-        android:textColor="@color/white" />
+        android:backgroundTint="@color/electricblue"
+        />
 </RelativeLayout>
 

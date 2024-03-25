@@ -64,10 +64,10 @@ class LoginActivity : AppCompatActivity() {
         password = etPassword.text.toString()
 
         if (TextUtils.isEmpty(password) || !ValidateEmail.isEmail(email)) {
-            tvLogin.setBackgroundColor(ContextCompat.getColor(this, R.color.red))
+            tvLogin.setBackgroundColor(ContextCompat.getColor(this, R.color.lightblue))
             tvLogin.isEnabled = false
         } else {
-            tvLogin.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
+            tvLogin.setBackgroundColor(ContextCompat.getColor(this, R.color.electricblue))
             tvLogin.isEnabled = true
         }
     }
@@ -190,6 +190,7 @@ class LoginActivity : AppCompatActivity() {
         startActivityForResult(googleSignInClient.signInIntent, REQ_ONE_TAP)
     }
 
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -204,7 +205,15 @@ class LoginActivity : AppCompatActivity() {
                     email = account.email!!
                     val credential = GoogleAuthProvider.getCredential(account.idToken, null)
                     mAuth.signInWithCredential(credential).addOnCompleteListener {
-                        if (it.isSuccessful) goHome(email, "Google")
+                        if (it.isSuccessful){
+                            var dateRegister = SimpleDateFormat("dd/MM/yyyy").format(Date())
+                            var dbRegister = FirebaseFirestore.getInstance()
+                            dbRegister.collection("users").document(email).set(hashMapOf(
+                                "user" to email,
+                                "dateRegister" to dateRegister
+                            ))
+                            goHome(email, "email")
+                        }
                         else Toast.makeText(
                             this,
                             "Error en la conexión con Google",

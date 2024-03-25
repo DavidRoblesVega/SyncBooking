@@ -36,5 +36,4 @@
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circular"
        app:backgroundTint="@color/white"/>
 
-
 </RelativeLayout>
