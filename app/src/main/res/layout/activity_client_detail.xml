@@ -12,6 +12,7 @@
         style="@style/EditTextClientDetail"
         android:inputType="text"/>
 
+
     <EditText
         android:id="@+id/etClientSurname"
         android:layout_below="@id/etClientName"
