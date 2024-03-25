@@ -64,10 +64,10 @@ class LoginActivity : AppCompatActivity() {
         password = etPassword.text.toString()
 
         if (TextUtils.isEmpty(password) || !ValidateEmail.isEmail(email)) {
-            tvLogin.setBackgroundColor(ContextCompat.getColor(this, R.color.red))
+            tvLogin.setBackgroundColor(ContextCompat.getColor(this, R.color.lightblue))
             tvLogin.isEnabled = false
         } else {
-            tvLogin.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
+            tvLogin.setBackgroundColor(ContextCompat.getColor(this, R.color.electricblue))
             tvLogin.isEnabled = true
         }
     }

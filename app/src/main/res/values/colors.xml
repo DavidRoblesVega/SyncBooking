@@ -9,4 +9,6 @@
     <color name="lightgrey">#EEEEEE</color>
     <color name="darkgrey">#212121</color>
     <color name="lightblue">#90CAF9</color>
+    <color name="electricblue">#0091EA</color>
+
 </resources>

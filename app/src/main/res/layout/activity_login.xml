@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="207dp"
         android:layout_gravity="center_horizontal|bottom"
-        android:src="@drawable/syncbooking_logo"
+        android:src="@drawable/final_logo2"
         />
 
 
@@ -23,7 +23,7 @@
         android:gravity="center_horizontal"
         android:text="@string/logintext"
         android:textSize="15sp"
-        android:textColor="@color/white"
+        android:textColor="@color/electricblue"
         android:fontFamily="@font/roboto_medium"/>
 
     <EditText
@@ -51,7 +51,7 @@
     <TextView
         android:id="@+id/tvLogin"
         style="@style/viewCustom"
-        android:background="@color/red"
+        android:background="@color/lightblue"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:paddingTop="7dp"
@@ -71,7 +71,7 @@
         android:gravity="center_horizontal"
         android:text="@string/forgotPassword"
         android:textSize="12sp"
-        android:textColor="@color/red"
+        android:textColor="@color/electricblue"
         android:fontFamily="@font/roboto_medium"/>
 
     <LinearLayout
@@ -86,14 +86,16 @@
             android:textSize="10sp"
             android:text="@string/acept"
             android:textColor="@color/white"
-            android:fontFamily="@font/roboto_medium"/>
+            android:fontFamily="@font/roboto_medium"
+            android:buttonTint="@color/electricblue"
+            />
         <TextView
             android:id="@+id/tvTerms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/terms"
             android:textSize="10sp"
-            android:textColor="@color/red"
+            android:textColor="@color/electricblue"
             android:layout_marginLeft="5dp"
             android:onClick="goTerms"/>
 

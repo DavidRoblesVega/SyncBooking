@@ -25,7 +25,7 @@
         <item name="android:textColor">@color/lightgrey</item>
         <item name="android:textColorHint">@color/lightgrey</item>
         <item name="android:fontFamily">@font/roboto_medium</item>
-        <item name="android:backgroundTint">@android:color/transparent</item>
+
         <item name="android:layout_marginStart">16dp</item>
     </style>
 
