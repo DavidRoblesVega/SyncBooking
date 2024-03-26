@@ -4,12 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import android.view.MenuItem
-import com.example.syncbooking.LoginActivity.Companion.useremail
+import com.example.syncbooking.Client.ClientActivity
+import com.example.syncbooking.Register.LoginActivity
+import com.example.syncbooking.Register.LoginActivity.Companion.useremail
+import com.example.syncbooking.Reservation.ReservationActivity
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 

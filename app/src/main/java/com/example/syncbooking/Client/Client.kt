@@ -1,4 +1,4 @@
-package com.example.syncbooking
+package com.example.syncbooking.Client
 
 data class Client(
     val name: String = "",

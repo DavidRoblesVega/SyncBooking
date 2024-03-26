@@ -1,4 +1,4 @@
-package com.example.syncbooking
+package com.example.syncbooking.Client
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore

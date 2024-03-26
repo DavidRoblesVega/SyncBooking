@@ -74,6 +74,7 @@
         android:textColor="@color/electricblue"
         android:fontFamily="@font/roboto_medium"/>
 
+<!--
     <LinearLayout
         android:id="@+id/lyTerms"
         style="@style/viewCustom"
@@ -98,8 +99,9 @@
             android:textColor="@color/electricblue"
             android:layout_marginLeft="5dp"
             android:onClick="goTerms"/>
-
     </LinearLayout>
+    -->
+
 
 
     <ImageView

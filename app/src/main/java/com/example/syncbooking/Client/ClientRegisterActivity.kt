@@ -1,10 +1,11 @@
-package com.example.syncbooking
+package com.example.syncbooking.Client
 
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.syncbooking.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -12,7 +13,6 @@ class ClientRegisterActivity : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-
     private lateinit var etName: EditText
     private lateinit var etSurname: EditText
     private lateinit var etAddress: EditText
@@ -27,14 +27,12 @@ class ClientRegisterActivity : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
-
         etName = findViewById(R.id.etName)
         etSurname = findViewById(R.id.etSurname)
         etAddress = findViewById(R.id.etAddress)
         etPhone = findViewById(R.id.etPhone)
         etEmailR = findViewById(R.id.etEmail)
         etNotes = findViewById(R.id.etNotes)
-
         btSaveClient = findViewById(R.id.btSaveClient)
         btSaveClient.setOnClickListener { generarIdAleatorio() }
     }

@@ -1,4 +1,4 @@
-package com.example.syncbooking
+package com.example.syncbooking.Client
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.syncbooking.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -16,7 +17,6 @@ class ClientActivity : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-
     private lateinit var btAddClient: FloatingActionButton
     private lateinit var etSearch: EditText
     private lateinit var recyclerViewClientes: RecyclerView

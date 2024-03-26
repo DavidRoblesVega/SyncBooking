@@ -59,6 +59,6 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:20.7.0")
 
     implementation ("androidx.drawerlayout:drawerlayout:1.2.0")
-    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+
 
 }

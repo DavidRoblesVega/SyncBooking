@@ -15,6 +15,7 @@
         android:drawablePadding="12dp"
         android:hint="Buscar cliente..."
         android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:background="@drawable/edittext_search"
         android:inputType="text"
         android:imeOptions="actionSearch"/>
@@ -30,10 +31,14 @@
         android:id="@+id/btAddClient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circular"
-       app:backgroundTint="@color/white"/>
+        app:backgroundTint="@color/electricblue"
+        android:src="@drawable/add_client"/>
+
+
+
 
 </RelativeLayout>

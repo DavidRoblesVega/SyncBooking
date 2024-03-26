@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".ClientDetailActivity"
+    tools:context=".Client.ReservationDetailActivity"
     android:background="@color/darkgrey">
 
     <TextView
@@ -136,22 +136,28 @@
 
         <Button
             android:id="@+id/btModifyClient"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Modificar cliente"
-            android:textColor="@color/white"
-            android:fontFamily="@font/roboto_medium"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="@color/lightblue"/>
+            android:layout_weight="1"
+            android:text="@string/modifyclient"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:layout_alignParentBottom="true"
+            android:backgroundTint="@color/electricblue"
+            android:layout_marginEnd="25dp"
+            />
 
         <Button
             android:id="@+id/btDeleteClient"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Eliminar cliente"
-            android:textColor="@color/lightgrey"
-            android:fontFamily="@font/roboto_medium"
-            android:backgroundTint="@color/lightblue"/>
+            android:layout_weight="1"
+            android:text="@string/deleteclient"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:layout_alignParentBottom="true"
+            android:backgroundTint="@color/red"
+            />
 
     </LinearLayout>
 

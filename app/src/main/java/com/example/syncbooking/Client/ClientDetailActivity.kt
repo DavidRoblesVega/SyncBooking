@@ -1,13 +1,11 @@
-package com.example.syncbooking
+package com.example.syncbooking.Client
 
-import android.animation.ArgbEvaluator
-import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import com.example.syncbooking.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -19,13 +17,11 @@ class ClientDetailActivity : AppCompatActivity() {
     private lateinit var etClientPhone: EditText
     private lateinit var etClientEmail: EditText
     private lateinit var etClientNotes: EditText
-
     private lateinit var btModifyClient: Button
     private lateinit var btDeleteClient: Button
     private lateinit var mAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
     private lateinit var clientRepository: ClientRepository
-
     private lateinit var clientId: String
     private lateinit var clientName: String
     private lateinit var clientSurname: String
@@ -33,7 +29,6 @@ class ClientDetailActivity : AppCompatActivity() {
     private lateinit var clientPhone: String
     private lateinit var clientEmail: String
     private lateinit var clientNotes: String
-
     private var isEditing: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +38,6 @@ class ClientDetailActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
         clientRepository = ClientRepository(mAuth, db)
-
         etClientName = findViewById(R.id.etClientName)
         etClientSurname = findViewById(R.id.etClientSurname)
         etClientAddress = findViewById(R.id.etClientAddress)
@@ -52,10 +46,8 @@ class ClientDetailActivity : AppCompatActivity() {
         etClientNotes = findViewById(R.id.etClientNotes)
         btModifyClient = findViewById(R.id.btModifyClient)
         btDeleteClient = findViewById(R.id.btDeleteClient)
-
         clientId = intent.getStringExtra("client_id") ?: ""
         obtenerClientePorId(clientId)
-
         btModifyClient.setOnClickListener {
             if (isEditing) {
                 guardarCambios()
@@ -78,29 +70,7 @@ class ClientDetailActivity : AppCompatActivity() {
         etClientEmail.isEnabled = true
         etClientNotes.isEnabled = true
         btModifyClient.text = "Guardar cambios"
-        btModifyClient.setBackgroundColor(ContextCompat.getColor(this, R.color.electricblue))
 
-        val startColor = ContextCompat.getColor(this, R.color.lightgrey)
-        val endColor = ContextCompat.getColor(this, R.color.electricblue)
-
-        animarCambiarColor(etClientName, startColor, endColor)
-        animarCambiarColor(etClientSurname, startColor, endColor)
-        animarCambiarColor(etClientAddress, startColor, endColor)
-        animarCambiarColor(etClientPhone, startColor, endColor)
-        animarCambiarColor(etClientEmail, startColor, endColor)
-        animarCambiarColor(etClientNotes, startColor, endColor)
-    }
-
-    private fun animarCambiarColor(editText: EditText, startColor: Int, endColor: Int) {
-        val colorAnimation = ObjectAnimator.ofObject(
-            editText,
-            "backgroundColor",
-            ArgbEvaluator(),
-            startColor,
-            endColor
-        )
-        colorAnimation.duration = 500 // Duración de la animación en milisegundos
-        colorAnimation.start()
     }
 
     private fun deshabilitarEdicion() {
@@ -112,16 +82,6 @@ class ClientDetailActivity : AppCompatActivity() {
         etClientEmail.isEnabled = false
         etClientNotes.isEnabled = false
         btModifyClient.text = "Modificar cliente"
-        btModifyClient.setBackgroundColor(ContextCompat.getColor(this, R.color.lightblue))
-
-        etClientName.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent))
-        etClientSurname.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent))
-        etClientAddress.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent))
-        etClientPhone.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent))
-        etClientEmail.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent))
-        etClientNotes.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent))
-
-
     }
 
     private fun guardarCambios() {
@@ -132,7 +92,6 @@ class ClientDetailActivity : AppCompatActivity() {
         val newEmail = etClientEmail.text.toString()
         val newNotes = etClientNotes.text.toString()
 
-        if (newName.isNotEmpty() && newSurname.isNotEmpty() && newAddress.isNotEmpty() && newPhone.isNotEmpty() && newEmail.isNotEmpty() && newNotes.isNotEmpty()) {
             val user = mAuth.currentUser
             user?.let { currentUser ->
                 val userDocumentRef = db.collection("users").document(currentUser.email!!)
@@ -165,11 +124,8 @@ class ClientDetailActivity : AppCompatActivity() {
                         ).show()
                     }
             }
-        } else {
-            Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT)
-                .show()
         }
-    }
+
 
     private fun eliminarCliente() {
         val user = mAuth.currentUser

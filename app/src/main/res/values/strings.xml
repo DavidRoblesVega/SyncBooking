@@ -42,6 +42,8 @@
     <string name="contact">Contacto</string>
     <string name="address">Dirección</string>
     <string name="information">Información</string>
+    <string name="modifyclient">Modificar cliente</string>
+    <string name="deleteclient">Eliminar cliente</string>
 
     <string name="prueba">Prueba</string>
 

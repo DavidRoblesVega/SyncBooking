@@ -1,10 +1,11 @@
-package com.example.syncbooking
+package com.example.syncbooking.Client
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.syncbooking.R
 
 class ClientAdapter(private val clients: List<Client>, private val onItemClick: (Client) -> Unit) :
     RecyclerView.Adapter<ClientAdapter.ClientViewHolder>() {
