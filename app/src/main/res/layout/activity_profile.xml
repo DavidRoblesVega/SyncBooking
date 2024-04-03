@@ -1,26 +1,190 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:padding="16dp"
+    tools:context=".ProfileActivity"
+    android:background="@color/darkgrey">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <TextView
+        android:id="@+id/tvUserNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/etUserName"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:fitsSystemWindows="true"
-        android:translationY="0dp">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUserNameLabel"
+        android:hint="Nombre"
+        style="@style/EditTextClientDetail"
+        android:inputType="text"
+        android:layout_marginTop="4dp"/>
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_profile"
-            app:title="@string/bar_title"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/green"
-            app:titleTextColor="@color/black"
-            app:layout_scrollFlags="scroll|enterAlways"/>
-    </com.google.android.material.appbar.AppBarLayout>
 
-  
-</LinearLayout>
+    <TextView
+        android:id="@+id/tvUserSurnameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apellido:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"
+        android:layout_below="@id/etUserName"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/etUserSurname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUserSurnameLabel"
+        android:hint="Apellido"
+        style="@style/EditTextClientDetail"
+        android:inputType="text"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvUserBirthdayLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha de nacimiento:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"
+        android:layout_below="@id/etUserSurname"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/etUserBirthday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUserBirthdayLabel"
+        android:hint="@string/birthday"
+        style="@style/EditTextClientDetail"
+        android:inputType="datetime"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvUserCountryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="País:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"
+        android:layout_below="@id/etUserBirthday"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/etUserCountry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUserCountryLabel"
+        android:hint="@string/country"
+        style="@style/EditTextClientDetail"
+        android:inputType="text"
+        android:layout_marginTop="4dp"/>
+
+
+
+    <TextView
+        android:id="@+id/tvUserPhoneLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teléfono:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"
+        android:layout_below="@id/etUserCountry"
+        android:layout_marginTop="16dp"/>
+
+
+
+    <EditText
+        android:id="@+id/etUserPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUserPhoneLabel"
+        android:hint="Teléfono"
+        style="@style/EditTextClientDetail"
+        android:inputType="phone"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvUserEmailLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"
+        android:layout_below="@id/etUserPhone"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/etUserEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUserEmailLabel"
+        android:hint="Email"
+        style="@style/EditTextClientDetail"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvUserDateRegisterLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha de registro:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"
+        android:layout_below="@id/etUserEmail"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/etUserDateRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUserDateRegisterLabel"
+        android:hint="@string/dateregister"
+        style="@style/EditTextClientDetail"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="4dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btModifyUser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/modifyuser"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:layout_alignParentBottom="true"
+            android:backgroundTint="@color/electricblue"
+            android:layout_marginEnd="25dp"
+            />
+
+        <Button
+            android:id="@+id/btDeleteUser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/deleteuser"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:layout_alignParentBottom="true"
+            android:backgroundTint="@color/red"
+            />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

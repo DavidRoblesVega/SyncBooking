@@ -1,4 +1,4 @@
-package com.example.syncbooking
+package com.example.syncbooking.Register
 
 import java.util.regex.Matcher
 import java.util.regex.Pattern

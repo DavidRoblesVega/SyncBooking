@@ -45,7 +45,13 @@
     <string name="modifyclient">Modificar cliente</string>
     <string name="deleteclient">Eliminar cliente</string>
 
-    <string name="prueba">Prueba</string>
+    <string name="userregister">Registro de Usuario</string>
+    <string name="country">País</string>
+    <string name="birthday">Fecha de nacimiento</string>
+    <string name="dateregister">Fecha de registro</string>
+    <string name="modifyuser">Modificar usuario</string>
+    <string name="deleteuser">Eliminar usuario</string>
+    <string name="choose_duration">Duración</string>
 
 
 </resources>

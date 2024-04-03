@@ -213,6 +213,8 @@
         android:layout_marginBottom="16dp"
         android:layout_alignParentBottom="true"
         android:backgroundTint="@color/electricblue"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         />
 </RelativeLayout>
 

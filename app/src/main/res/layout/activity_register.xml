@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/information"
-        android:textColor="@color/white"
+        android:text="@string/userregister"
+        android:textColor="@color/electricblue"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -24,6 +24,7 @@
         android:layout_below="@id/informationTitle"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -31,7 +32,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/name"
             android:textColor="@color/electricblue"
-            android:textColorHint="@color/electricblue"
+            android:textColorHint="@color/white"
             app:boxStrokeColor="@color/electricblue"
             app:cursorColor="@color/electricblue"
             app:hintTextColor="@color/electricblue">
@@ -41,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:textColor="@color/electricblue" />
+                android:textColor="@color/white" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,7 +52,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/surnames"
             android:textColor="@color/electricblue"
-            android:textColorHint="@color/electricblue"
+            android:textColorHint="@color/white"
             app:boxStrokeColor="@color/electricblue"
             app:cursorColor="@color/electricblue"
             app:hintTextColor="@color/electricblue">
@@ -61,60 +62,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:textColor="@color/electricblue" />
+                android:textColor="@color/white" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Campo "Dirección" -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/address"
-            android:textColor="@color/electricblue"
-            android:textColorHint="@color/electricblue"
-            app:boxStrokeColor="@color/electricblue"
-            app:cursorColor="@color/electricblue"
-            app:hintTextColor="@color/electricblue">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPostalAddress"
-                android:textColor="@color/electricblue" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-
-    <!-- Título "Contacto" -->
-    <TextView
-        android:id="@+id/contactTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/informationLayout"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/contact"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:id="@+id/contactLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/contactTitle"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical">
-
-        <!-- Campo "Teléfono" -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/phone"
             android:textColor="@color/electricblue"
-            android:textColorHint="@color/electricblue"
+            android:textColorHint="@color/white"
             app:boxStrokeColor="@color/electricblue"
             app:cursorColor="@color/electricblue"
             app:hintTextColor="@color/electricblue">
@@ -124,55 +83,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
-                android:textColor="@color/electricblue" />
+                android:textColor="@color/white" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
-
-    </LinearLayout>
-
-    <!-- Título "Otros" -->
-    <TextView
-        android:id="@+id/otherTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/contactLayout"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/other"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:id="@+id/otherLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/otherTitle"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical">
-
-        <!-- Campo "Notas" -->
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/notes"
+            android:hint="@string/country"
             android:textColor="@color/electricblue"
-            android:textColorHint="@color/electricblue"
+            android:textColorHint="@color/white"
             app:boxStrokeColor="@color/electricblue"
             app:cursorColor="@color/electricblue"
             app:hintTextColor="@color/electricblue">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etNotes"
+                android:id="@+id/etCountry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:textColor="@color/electricblue" />
+                android:inputType="text"
+                android:textColor="@color/white" />
+
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/birthday"
+            android:textColor="@color/electricblue"
+            android:textColorHint="@color/white"
+            app:boxStrokeColor="@color/electricblue"
+            app:cursorColor="@color/electricblue"
+            app:hintTextColor="@color/electricblue">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="datetime"
+                android:textColor="@color/white" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
 
         <LinearLayout
             android:id="@+id/lyTerms"
@@ -180,7 +133,7 @@
             android:orientation="horizontal"
             android:background="@color/darkgrey">
             <CheckBox
-                android:id="@+id/cbAcept"
+                android:id="@+id/cbAccept"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
@@ -212,6 +165,8 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/electricblue"
-        android:text="@string/save" />
+        android:text="@string/save"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 </RelativeLayout>
 

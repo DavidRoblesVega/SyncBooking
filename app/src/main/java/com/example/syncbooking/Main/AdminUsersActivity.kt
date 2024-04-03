@@ -1,8 +1,9 @@
-package com.example.syncbooking
+package com.example.syncbooking.Main
 
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
+import com.example.syncbooking.R
 import com.example.syncbooking.R.id.toolbar_adminusers
 
 class AdminUsersActivity : AppCompatActivity() {

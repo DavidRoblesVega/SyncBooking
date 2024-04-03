@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="duration_options">
+        <item>15 minutos</item>
+        <item>30 minutos</item>
+        <item>45 minutos</item>
+        <item>1 hora</item>
+        <item>1 hora 15 minutos</item>
+        <item>1 hora 30 minutos</item>
+        <item>1 hora 45 minutos</item>
+        <item>2 horas</item>
+        <item>2 horas 15 minutos</item>
+        <item>2 horas 30 minutos</item>
+        <item>2 horas 45 minutos</item>
+        <item>3 horas</item>
+    </string-array>
+</resources>

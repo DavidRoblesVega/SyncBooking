@@ -60,5 +60,4 @@ dependencies {
 
     implementation ("androidx.drawerlayout:drawerlayout:1.2.0")
 
-
 }

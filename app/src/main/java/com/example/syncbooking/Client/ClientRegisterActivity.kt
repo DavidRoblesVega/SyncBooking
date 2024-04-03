@@ -77,6 +77,7 @@ class ClientRegisterActivity : AppCompatActivity() {
             val email = etEmailR.text.toString()
             val notes = etNotes.text.toString()
 
+
             val clienteData = hashMapOf(
                 "name" to name,
                 "surname" to surname,

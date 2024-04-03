@@ -35,7 +35,7 @@
             app:hintTextColor="@color/electricblue"
             app:cursorColor="@color/electricblue"
             android:textColor="@color/electricblue">
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
                 android:id="@+id/etName"
                 android:inputType="text"
                 android:layout_width="match_parent"
@@ -54,7 +54,7 @@
             app:cursorColor="@color/electricblue"
             android:textColor="@color/electricblue">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
                 android:id="@+id/etSurname"
                 android:inputType="text"
                 android:layout_width="match_parent"
@@ -84,7 +84,22 @@
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Texto descriptivo del Spinner -->
+        <TextView
+            android:id="@+id/textViewDuration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_duration"
+            android:textColor="@color/electricblue"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
 
+        <!-- Spinner de duración -->
+        <Spinner
+            android:id="@+id/spinnerDuration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/btnSeleccionarFechaHora"
@@ -97,20 +112,6 @@
             android:layout_weight="1"
             android:backgroundTint="@color/electricblue"
             android:text="Seleccionar fecha y hora" />
-
-        <EditText
-            android:id="@+id/etDuration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="16dp"
-            android:inputType="text"
-            android:maxLength="5"
-            android:hint="HH:MM"
-            android:textColor="@color/electricblue"
-            android:textColorHint="@color/electricblue"
-            android:textSize="18sp"
-            android:backgroundTint="@color/electricblue" />
 
     </LinearLayout>
 
@@ -134,7 +135,5 @@
             android:text="Guardar" />
 
     </LinearLayout>
-
-
 
 </RelativeLayout>
