@@ -23,11 +23,9 @@
     <string name="default_web_client_id">289652127573-9vm82n3l7f77ppja86eo9dj3fdtu36ci.apps.googleusercontent.com</string>
 
     <string name="bar_title">SyncBooking</string>
-    <string name="menu_adminusers">Administrar Usuarios</string>
     <string name="menu_profile">Perfil</string>
-    <string name="menu_becamepremium">Hazte Premium</string>
-    <string name="menu_preferences">Ajustes</string>
     <string name="menu_signout">Cerrar Sesión</string>
+    <string name="menu_email">davidm3k7@gmail.com</string>
 
     <string name="navigation_drawer_open">Menu</string>
     <string name="navigation_drawer_close">Close</string>
@@ -52,6 +50,10 @@
     <string name="modifyuser">Modificar usuario</string>
     <string name="deleteuser">Eliminar usuario</string>
     <string name="choose_duration">Duración</string>
+    <string name="reservashoy">Reservas hoy</string>
+
+    <string name="modifyreserva">Modificar reserva</string>
+    <string name="deletereserva">Eliminar reserva</string>
 
 
 </resources>

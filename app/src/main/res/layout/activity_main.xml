@@ -16,10 +16,12 @@
         android:layout_height="match_parent">
 
         <include
-            layout="@layout/app_bar_main"
             android:id="@+id/appBarMain"
+            layout="@layout/app_bar_main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="-1dp" />
 
         <LinearLayout
             android:id="@+id/buttonsLayout"
@@ -38,6 +40,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
+                android:fontFamily="@font/roboto_medium"
                 android:gravity="center"
                 android:onClick="callClient"
                 android:text="CLIENTES"
@@ -51,6 +54,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
+                android:fontFamily="@font/roboto_medium"
                 android:gravity="center"
                 android:onClick="callReservation"
                 android:text="RESERVAS"
@@ -63,12 +67,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
-                android:text="Reservas hoy"
+                android:text="@string/reservashoy"
                 android:textColor="@color/electricblue"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewReservas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -81,7 +86,7 @@
                     android:id="@+id/recyclerViewReservas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="45dp"
+                    android:layout_marginBottom="@dimen/margin_bottom_recycler_view"
                     android:padding="8dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
@@ -93,9 +98,10 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
         app:menu="@menu/activity_main_drawer" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

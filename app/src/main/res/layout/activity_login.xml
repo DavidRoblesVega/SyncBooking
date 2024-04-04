@@ -61,7 +61,8 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:onClick="login"
-        android:fontFamily="@font/roboto_medium"/>
+        android:fontFamily="@font/roboto_medium"
+        />
 
     <TextView
         android:id="@+id/txtForgotPassword"

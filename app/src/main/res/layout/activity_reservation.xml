@@ -5,135 +5,42 @@
     android:layout_height="match_parent"
     android:background="@color/darkgrey">
 
-    <!-- Título "Información" -->
-    <TextView
-        android:id="@+id/informationTitle"
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:drawableStart="@drawable/search_icon"
+        android:drawablePadding="12dp"
+        android:hint="Buscar reserva..."
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:background="@drawable/edittext_search"
+        android:inputType="text"
+        android:imeOptions="actionSearch"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewReservas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/etSearch"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btAddReserva"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/information"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp" />
-
-    <LinearLayout
-        android:id="@+id/informationLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@id/informationTitle"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:hint="@string/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxStrokeColor="@color/electricblue"
-            android:textColorHint="@color/electricblue"
-            app:hintTextColor="@color/electricblue"
-            app:cursorColor="@color/electricblue"
-            android:textColor="@color/electricblue">
-            <AutoCompleteTextView
-                android:id="@+id/etName"
-                android:inputType="text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/electricblue"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Campo "Apellidos" -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:hint="@string/surnames"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxStrokeColor="@color/electricblue"
-            android:textColorHint="@color/electricblue"
-            app:hintTextColor="@color/electricblue"
-            app:cursorColor="@color/electricblue"
-            android:textColor="@color/electricblue">
-
-            <AutoCompleteTextView
-                android:id="@+id/etSurname"
-                android:inputType="text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/electricblue"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:hint="@string/notes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxStrokeColor="@color/electricblue"
-            android:textColorHint="@color/electricblue"
-            app:hintTextColor="@color/electricblue"
-            app:cursorColor="@color/electricblue"
-            android:textColor="@color/electricblue"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etNotes"
-                android:inputType="textMultiLine"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/electricblue"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Texto descriptivo del Spinner -->
-        <TextView
-            android:id="@+id/textViewDuration"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/choose_duration"
-            android:textColor="@color/electricblue"
-            android:textSize="18sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"/>
-
-        <!-- Spinner de duración -->
-        <Spinner
-            android:id="@+id/spinnerDuration"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/btnSeleccionarFechaHora"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="16dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/electricblue"
-            android:text="Seleccionar fecha y hora" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
         android:layout_alignParentBottom="true"
-        android:gravity="center_horizontal">
+        android:layout_alignParentEnd="true"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Circular"
+        app:backgroundTint="@color/electricblue"
+        android:src="@drawable/add_client"/>
 
 
-        <Button
-            android:id="@+id/btnGuardar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="16dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/electricblue"
-            android:text="Guardar" />
 
-    </LinearLayout>
 
 </RelativeLayout>

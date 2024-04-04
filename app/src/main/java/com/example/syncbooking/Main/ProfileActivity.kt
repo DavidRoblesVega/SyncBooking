@@ -1,11 +1,14 @@
 package com.example.syncbooking
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.syncbooking.Main.UserRepository
+import com.example.syncbooking.Register.LoginActivity
 import com.example.syncbooking.Register.LoginActivity.Companion.useremail
 
 import com.google.firebase.auth.FirebaseAuth
@@ -58,7 +61,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         btDeleteUser.setOnClickListener {
-            deleteUser()
+            showDeleteConfirmationDialog()
         }
     }
 
@@ -146,12 +149,49 @@ class ProfileActivity : AppCompatActivity() {
             userDocRef
                 .delete()
                 .addOnSuccessListener {
-                    Toast.makeText(this, "Usuario eliminado correctamente", Toast.LENGTH_SHORT).show()
-                    finish()
+                    // Eliminar la cuenta de autenticación del usuario
+                    currentUser.delete()
+                        .addOnCompleteListener { deleteTask ->
+                            if (deleteTask.isSuccessful) {
+                                // Cierre de sesión exitoso
+                                mAuth.signOut()
+
+                                val intent = Intent(this, LoginActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            } else {
+                                // Error al eliminar la cuenta de autenticación
+                                Toast.makeText(
+                                    this,
+                                    "Error al eliminar la cuenta de autenticación: ${deleteTask.exception?.message}",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
                 }
                 .addOnFailureListener { e ->
-                    Toast.makeText(this, "Error al eliminar el usuario: $e", Toast.LENGTH_SHORT).show()
+                    // Error al eliminar el usuario de la base de datos
+                    Toast.makeText(this, "Error al eliminar el usuario: $e", Toast.LENGTH_SHORT)
+                        .show()
                 }
         }
     }
+    private fun showDeleteConfirmationDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Confirmar eliminación")
+        builder.setMessage("¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.")
+
+        builder.setPositiveButton("Eliminar") { dialog, which ->
+            // El usuario confirmó eliminar la cuenta
+            deleteUser()
+        }
+
+        builder.setNegativeButton("Cancelar") { dialog, which ->
+            // El usuario canceló la eliminación de la cuenta
+        }
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
 }

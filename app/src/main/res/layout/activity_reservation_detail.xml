@@ -1,0 +1,164 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".Reservation.ReservationDetailActivity"
+    android:background="@color/darkgrey">
+
+    <TextView
+        android:id="@+id/tvReservaNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/etReservaName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvReservaNameLabel"
+        android:hint="Nombre"
+        style="@style/EditTextClientDetail"
+        android:inputType="text"
+        android:layout_marginTop="4dp"/>
+
+
+    <TextView
+        android:id="@+id/tvReservaSurnameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apellido:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"
+        android:layout_below="@id/etReservaName"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/etReservaSurname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvReservaSurnameLabel"
+        android:hint="Apellido"
+        style="@style/EditTextClientDetail"
+        android:inputType="text"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvReservaDateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"
+        android:layout_below="@id/etReservaSurname"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/etReservaDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvReservaDateLabel"
+        android:hint="Fecha"
+        style="@style/EditTextClientDetail"
+        android:inputType="text"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvReservaTimeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hora de inicio:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"
+        android:layout_below="@id/etReservaDate"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/etReservaTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvReservaTimeLabel"
+        android:hint="Hora de inicio"
+        style="@style/EditTextClientDetail"
+        android:inputType="phone"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvReservaTimeFinishLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hora de finalización:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"
+        android:layout_below="@id/etReservaTime"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/etReservaTimeFinish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvReservaTimeFinishLabel"
+        android:hint="Hora de finalización"
+        style="@style/EditTextClientDetail"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvReservaNotesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notas:"
+        android:textColor="@color/electricblue"
+        android:textSize="16sp"
+        android:layout_below="@id/etReservaTimeFinish"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/etReservaNotes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvReservaNotesLabel"
+        android:hint="Notas"
+        style="@style/EditTextClientDetail"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="4dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btModifyReserva"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/modifyreserva"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:layout_alignParentBottom="true"
+            android:backgroundTint="@color/electricblue"
+            android:layout_marginEnd="25dp"
+            />
+
+        <Button
+            android:id="@+id/btDeleteReserva"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/deletereserva"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:layout_alignParentBottom="true"
+            android:backgroundTint="@color/red"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>
