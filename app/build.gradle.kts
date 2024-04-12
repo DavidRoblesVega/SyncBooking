@@ -60,4 +60,8 @@ dependencies {
 
     implementation ("androidx.drawerlayout:drawerlayout:1.2.0")
 
+    implementation ("androidx.work:work-runtime:2.9.0")
+
+    implementation ("com.google.firebase:firebase-firestore-ktx:24.11.0")
+
 }

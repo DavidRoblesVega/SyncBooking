@@ -1,5 +1,9 @@
 package com.example.syncbooking.Main
 
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+
 data class Reserva(
     val name: String = "",
     val surname: String = "",

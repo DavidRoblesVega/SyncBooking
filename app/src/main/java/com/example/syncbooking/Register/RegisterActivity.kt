@@ -9,7 +9,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.syncbooking.Main.MainActivity
 import com.example.syncbooking.R
+import com.example.syncbooking.Util.RegisterHelper
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -57,7 +62,10 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+
+
     private fun registerUser(useremail: String?, dateRegister: String?) {
+        // Verificar si todos los campos están llenos
         if (useremail.isNullOrEmpty() || dateRegister.isNullOrEmpty() ||
             etName.text.isNullOrEmpty() || etSurname.text.isNullOrEmpty() ||
             etPhone.text.isNullOrEmpty() || etCountry.text.isNullOrEmpty() ||
@@ -67,19 +75,30 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
-
-        val datePattern = Regex("""\d{2}/\d{2}/\d{4}""")
-
-        if (!datePattern.matches(etBirthday.text.toString())) {
+        // Verificar el formato de la fecha de nacimiento
+        val birthday = etBirthday.text.toString()
+        if (!RegisterHelper.isDateFormatValid(birthday)) {
             Toast.makeText(this, "El formato de fecha debe ser DD/MM/AAAA", Toast.LENGTH_SHORT).show()
             return
         }
 
+        // Verificar si la fecha de nacimiento es válida (inferior a la fecha actual)
+        if (!RegisterHelper.validateBirthday(birthday)) {
+            Toast.makeText(this, "La fecha de nacimiento debe ser anterior a la fecha actual.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Verificar si el nuevo formato y longitud del número de teléfono móvil son válidos
+        if (!RegisterHelper.validatePhoneNumber(etPhone.text.toString())) {
+            Toast.makeText(this, "El número de teléfono móvil no es válido", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Si todos los campos son válidos, procede a registrar al usuario en la base de datos
         val name = etName.text.toString()
         val surname = etSurname.text.toString()
         val phone = etPhone.text.toString()
         val country = etCountry.text.toString()
-        val birthday = etBirthday.text.toString()
         val userIsRegister = true
         val terms = true
 
@@ -105,4 +124,6 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
+
+
 }

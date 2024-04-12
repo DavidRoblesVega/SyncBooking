@@ -1,16 +1,31 @@
 package com.example.syncbooking.Reservation
 
+import android.annotation.SuppressLint
+import android.app.AlarmManager
 import android.app.DatePickerDialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.app.TimePickerDialog
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import com.example.syncbooking.Client.ClientActivity
+import com.example.syncbooking.Main.AlarmNotification
+import com.example.syncbooking.Main.Reserva
 import com.example.syncbooking.R
+import com.example.syncbooking.Reservation.NotificationHelper.scheduleNotification
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 class ReservationRegisterActivity : AppCompatActivity() {
 
@@ -27,6 +42,8 @@ class ReservationRegisterActivity : AppCompatActivity() {
     private lateinit var etNotes: EditText
     private lateinit var spinnerDuration: Spinner
 
+    private var selectedDate: Calendar? = null
+
     private val durations = arrayOf(
         "15 minutos" to 15,
         "30 minutos" to 30,
@@ -41,6 +58,11 @@ class ReservationRegisterActivity : AppCompatActivity() {
         "2 horas 45 minutos" to 165,
         "3 horas" to 180
     )
+
+    companion object {
+        var reservaNueva: Reserva? = null
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -135,7 +157,7 @@ class ReservationRegisterActivity : AppCompatActivity() {
                 fechaSeleccionada = formattedDate
 
                 // Después de seleccionar la fecha, mostrar el diálogo de selección de hora
-                mostrarTimePicker()
+                mostrarTimePicker(selectedDate) // Llamar a mostrarTimePicker con la fecha seleccionada
             },
             year,
             month,
@@ -149,51 +171,40 @@ class ReservationRegisterActivity : AppCompatActivity() {
     }
 
 
-    private fun mostrarTimePicker() {
-        val calendar = Calendar.getInstance()
-        val hourOfDay = calendar.get(Calendar.HOUR_OF_DAY)
-        val minute = calendar.get(Calendar.MINUTE)
+    private fun mostrarTimePicker(selectedDate: Calendar) {
+        val hourOfDay = selectedDate.get(Calendar.HOUR_OF_DAY)
+        val minute = selectedDate.get(Calendar.MINUTE)
 
         val timePickerDialog = TimePickerDialog(
             this,
             TimePickerDialog.OnTimeSetListener { view: TimePicker, hourOfDay: Int, minute: Int ->
-                // Crear un Calendar para la hora seleccionada
-                val selectedTime = Calendar.getInstance()
-                selectedTime.set(Calendar.HOUR_OF_DAY, hourOfDay)
-                selectedTime.set(Calendar.MINUTE, minute)
+                // Actualizar la hora seleccionada en selectedDate
+                selectedDate.set(Calendar.HOUR_OF_DAY, hourOfDay)
+                selectedDate.set(Calendar.MINUTE, minute)
 
                 // Obtener la hora actual
                 val currentTime = Calendar.getInstance()
 
-                // Obtener la fecha seleccionada en el DatePicker
-                val selectedDate = fechaSeleccionada?.let {
-                    val dateParts = it.split("/")
-                    val year = dateParts[2].toInt()
-                    val month = dateParts[1].toInt() - 1 // Restamos 1 porque los meses en Calendar empiezan en 0
-                    val dayOfMonth = dateParts[0].toInt()
-
-                    Calendar.getInstance().apply {
-                        set(year, month, dayOfMonth)
-                    }
-                }
-
                 // Verificar si la fecha seleccionada en el DatePicker es posterior a la fecha actual
-                if (selectedDate != null && selectedDate.after(currentTime)) {
+                if (selectedDate.after(currentTime)) {
                     // Si la fecha seleccionada es posterior a la fecha actual, permitir cualquier hora
                     val formattedHour = String.format("%02d", hourOfDay)
                     val formattedMinute = String.format("%02d", minute)
                     horaSeleccionada = "$formattedHour:$formattedMinute"
-                } else if (selectedTime.after(currentTime)) {
-                    // Si la fecha seleccionada es la misma que la fecha actual pero la hora seleccionada es posterior a la hora actual, permitir
-                    val formattedHour = String.format("%02d", hourOfDay)
-                    val formattedMinute = String.format("%02d", minute)
-                    horaSeleccionada = "$formattedHour:$formattedMinute"
+
+
+                    this.selectedDate = selectedDate
+                    //scheduleNotification(this, selectedDate.timeInMillis)
                 } else {
                     // La hora seleccionada es anterior a la hora actual o a la fecha seleccionada en el DatePicker,
                     // mostrar un mensaje de error
-                    Toast.makeText(this, "Seleccione una hora posterior a la actual", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "Seleccione una hora posterior a la actual",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     // Mostrar el diálogo de selección de hora nuevamente
-                    mostrarTimePicker()
+                    mostrarTimePicker(selectedDate) // Llamar de nuevo a mostrarTimePicker con la fecha seleccionada
                 }
             },
             hourOfDay,
@@ -204,13 +215,17 @@ class ReservationRegisterActivity : AppCompatActivity() {
         timePickerDialog.show()
     }
 
+
+
+
     private fun cargarNombresClientes() {
         val clientesRef = db.collection("users").document(mAuth.currentUser?.email!!)
             .collection("clientes")
 
         clientesRef.get().addOnSuccessListener { documents ->
             val nombresClientes = documents.mapNotNull { it.getString("name") }
-            val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, nombresClientes)
+            val adapter =
+                ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, nombresClientes)
             etName.setAdapter(adapter)
         }.addOnFailureListener { exception ->
             Toast.makeText(
@@ -226,7 +241,8 @@ class ReservationRegisterActivity : AppCompatActivity() {
 
         clientesRef.get().addOnSuccessListener { documents ->
             val apellidosClientes = documents.mapNotNull { it.getString("surname") }
-            val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, apellidosClientes)
+            val adapter =
+                ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, apellidosClientes)
             etSurname.setAdapter(adapter)
         }.addOnFailureListener { exception ->
             Toast.makeText(
@@ -242,7 +258,11 @@ class ReservationRegisterActivity : AppCompatActivity() {
         val surname = etSurname.text.toString()
 
         if (name.isEmpty() || surname.isEmpty()) {
-            Toast.makeText(this, "Por favor ingrese el nombre y apellido del cliente", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this,
+                "Por favor ingrese el nombre y apellido del cliente",
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
 
@@ -262,7 +282,8 @@ class ReservationRegisterActivity : AppCompatActivity() {
                 } else {
                     // No se encontraron clientes con el nombre y apellido proporcionados
                     Toast.makeText(
-                        this, "No se encontró ningún cliente con el nombre y apellido proporcionados",
+                        this,
+                        "No se encontró ningún cliente con el nombre y apellido proporcionados",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -283,7 +304,11 @@ class ReservationRegisterActivity : AppCompatActivity() {
         // Verificar si se ha seleccionado una fecha y hora
         if (fechaSeleccionada.isNullOrEmpty() || horaSeleccionada.isNullOrEmpty()) {
             // Si no se ha seleccionado fecha o hora, mostrar un mensaje de error y salir de la función
-            Toast.makeText(this, "Por favor, seleccione fecha y hora antes de guardar la reserva", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this,
+                "Por favor, seleccione fecha y hora antes de guardar la reserva",
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
         // Verifica si se ha ingresado una duración válida
@@ -332,8 +357,16 @@ class ReservationRegisterActivity : AppCompatActivity() {
                         "Reserva guardada correctamente con ID: $reservaId",
                         Toast.LENGTH_SHORT
                     ).show()
+                    reservaNueva = Reserva(name = etName.text.toString(), surname = etSurname.text.toString(), time = horaSeleccionada!!)
+
+                    scheduleNotification(this, selectedDate!!.timeInMillis, reservaId)
+
+
+
                     val intent = Intent(this, ReservationActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
                     startActivity(intent)
+                    finish()
                 }.addOnFailureListener { e ->
                     Toast.makeText(
                         this, "Error al guardar la reserva: $e", Toast.LENGTH_SHORT

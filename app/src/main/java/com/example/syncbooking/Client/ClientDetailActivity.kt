@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.syncbooking.R
 import com.google.firebase.auth.FirebaseAuth
@@ -57,7 +58,7 @@ class ClientDetailActivity : AppCompatActivity() {
         }
 
         btDeleteClient.setOnClickListener {
-            eliminarCliente()
+            showDeleteConfirmationDialog()
         }
     }
 
@@ -175,5 +176,22 @@ class ClientDetailActivity : AppCompatActivity() {
                     Toast.makeText(this, "Error al obtener datos del cliente: $e", Toast.LENGTH_SHORT).show()
                 }
         }
+    }
+    private fun showDeleteConfirmationDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Confirmar eliminación")
+        builder.setMessage("¿Estás seguro de que deseas eliminar el cliente? Esta acción no se puede deshacer.")
+
+        builder.setPositiveButton("Eliminar") { dialog, which ->
+            // El usuario confirmó eliminar la cuenta
+            eliminarCliente()
+        }
+
+        builder.setNegativeButton("Cancelar") { dialog, which ->
+            // El usuario canceló la eliminación de la cuenta
+        }
+
+        val dialog = builder.create()
+        dialog.show()
     }
 }

@@ -2,9 +2,11 @@ package com.example.syncbooking.Main
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import java.util.concurrent.TimeUnit
 
 class ReservaRepository (private val mAuth: FirebaseAuth, private val db: FirebaseFirestore){
 

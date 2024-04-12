@@ -14,6 +14,17 @@ import com.example.syncbooking.Register.LoginActivity.Companion.useremail
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
+
+import android.util.Log
+import com.example.syncbooking.Util.RegisterHelper
+
+import com.google.android.gms.tasks.Tasks
+import com.google.firebase.firestore.CollectionReference
+
+
+
+import kotlinx.coroutines.tasks.await
+
 class ProfileActivity : AppCompatActivity() {
 
     private lateinit var etUserName: EditText
@@ -113,6 +124,24 @@ class ProfileActivity : AppCompatActivity() {
 
         val user = mAuth.currentUser
         user?.let { currentUser ->
+            // Verificar si el nuevo formato de fecha de nacimiento es válido
+            if (!RegisterHelper.isDateFormatValid(newBirthday)) {
+                Toast.makeText(this, "El formato de fecha debe ser DD/MM/AAAA", Toast.LENGTH_SHORT).show()
+                return
+            }
+
+            // Verificar si la nueva fecha de nacimiento es válida (inferior a la fecha actual)
+            if (!RegisterHelper.validateBirthday(newBirthday)) {
+                Toast.makeText(this, "La fecha de nacimiento debe ser anterior a la fecha actual.", Toast.LENGTH_SHORT).show()
+                return
+            }
+
+            // Verificar si el nuevo formato y longitud del número de teléfono móvil son válidos
+            if (!RegisterHelper.validatePhoneNumber(newPhone)) {
+                Toast.makeText(this, "El número de teléfono móvil no es válido", Toast.LENGTH_SHORT).show()
+                return
+            }
+
             userDocRef
                 .update(
                     mapOf(
@@ -144,42 +173,70 @@ class ProfileActivity : AppCompatActivity() {
     private fun deleteUser() {
         val user = mAuth.currentUser
         user?.let { currentUser ->
-            val userDocRef = db.collection("users").document(useremail)
+            val userEmail = currentUser.email
+            if (userEmail != null) {
+                val userDocRef = db.collection("users").document(userEmail)
 
-            userDocRef
-                .delete()
-                .addOnSuccessListener {
-                    // Eliminar la cuenta de autenticación del usuario
-                    currentUser.delete()
-                        .addOnCompleteListener { deleteTask ->
-                            if (deleteTask.isSuccessful) {
-                                // Cierre de sesión exitoso
-                                mAuth.signOut()
+                userDocRef.delete()
+                    .addOnSuccessListener {
+                        // Eliminar la cuenta de autenticación del usuario
+                        currentUser.delete()
+                            .addOnCompleteListener { deleteTask ->
+                                if (deleteTask.isSuccessful) {
+                                    // Eliminar la colección "reservas"
+                                    val reservasCollectionRef = db.collection("users").document(userEmail).collection("reservas")
+                                    deleteCollection(reservasCollectionRef)
 
-                                val intent = Intent(this, LoginActivity::class.java)
-                                startActivity(intent)
-                                finish()
-                            } else {
-                                // Error al eliminar la cuenta de autenticación
-                                Toast.makeText(
-                                    this,
-                                    "Error al eliminar la cuenta de autenticación: ${deleteTask.exception?.message}",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                    // Eliminar la colección "clientes"
+                                    val clientesCollectionRef = db.collection("users").document(userEmail).collection("clientes")
+                                    deleteCollection(clientesCollectionRef)
+
+                                    // Cierre de sesión exitoso
+                                    mAuth.signOut()
+
+                                    val intent = Intent(this, LoginActivity::class.java)
+                                    startActivity(intent)
+                                    finish()
+                                } else {
+                                    // Error al eliminar la cuenta de autenticación
+                                    Toast.makeText(
+                                        this,
+                                        "Error al eliminar la cuenta de autenticación: ${deleteTask.exception?.message}",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
                             }
-                        }
-                }
-                .addOnFailureListener { e ->
-                    // Error al eliminar el usuario de la base de datos
-                    Toast.makeText(this, "Error al eliminar el usuario: $e", Toast.LENGTH_SHORT)
-                        .show()
-                }
+                    }
+                    .addOnFailureListener { e ->
+                        // Error al eliminar el usuario de la base de datos
+                        Toast.makeText(this, "Error al eliminar el usuario: $e", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+            }
         }
     }
+
+    private fun deleteCollection(collection: CollectionReference) {
+        collection.get()
+            .addOnSuccessListener { querySnapshot ->
+                for (document in querySnapshot) {
+                    document.reference.delete()
+                        .addOnFailureListener { e ->
+                            Log.e("Error deleting document", e.toString())
+                        }
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e("Error fetching documents", e.toString())
+            }
+    }
+
+
     private fun showDeleteConfirmationDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Confirmar eliminación")
-        builder.setMessage("¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.")
+        builder.setMessage(
+            "¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer. Todos los clientes y reservas asociados a tu cuenta también serán eliminados.")
 
         builder.setPositiveButton("Eliminar") { dialog, which ->
             // El usuario confirmó eliminar la cuenta
